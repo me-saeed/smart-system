@@ -44,12 +44,44 @@ module.exports = router;
 
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('*', (req, res) => {
+// app.use('*', (req, res) => {
 
-	console.log("yes i have recieved request")
+// 	console.log("yes i have recieved request")
 
+// });
+
+
+
+
+
+// server.js
+
+const jwt = require('express-jwt');
+const jsonwebtoken = require('jsonwebtoken');
+
+
+
+app.use(cors());
+const jwtSecret = 'secret123';
+router.get('/jwt', (req, res) => {
+	console.log("in jwt")
+  res.json({
+    token: jsonwebtoken.sign({ user: 'johndoe' }, jwtSecret)
+  });
 });
+app.use(jwt({ secret: jwtSecret, algorithms: ['HS256'] }));
+const foods = [
+  { id: 1, description: 'burritos' },
+  { id: 2, description: 'quesadillas' },
+  { id: 3, description: 'churos' }
+];
+router.get('/foods', (req, res) => {
+  res.json(foods);
+});
+
+
+
 
 app.listen(process.env.PORT || 5000, () => console.log(`Running on PORT ${process.env.PORT || 5000}`));
