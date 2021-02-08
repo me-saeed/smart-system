@@ -2,13 +2,14 @@
 const express = require("express");
 const app = require('express')();
 const axios = require("axios");
-
+const path = require('path');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const router = express.Router();
-
+const signup=require('./routes/signnup/bsignup');
+const signin=require('./routes/signin/bsignin');
 
 
 app.use(cors());
@@ -20,7 +21,8 @@ app.use("/api", router);
 
 
 
-
+signup(router);
+signin(router);
 
 
 

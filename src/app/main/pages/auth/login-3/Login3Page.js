@@ -132,7 +132,7 @@ function Login3Page() {
 									</FormControl>
 
 									<Link className="font-medium" to="/pages/auth/forgot-password-2">
-										Forgot Password?
+										Forgot Password
 									</Link>
 								</div>
 

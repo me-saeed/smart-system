@@ -12,6 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
@@ -35,6 +36,7 @@ function RegisterPage() {
 	function isFormValid() {
 		return (
 			form.email.length > 0 &&
+			form.email.includes('@') &&
 			form.password.length > 0 &&
 			form.password.length > 3 &&
 			form.password === form.passwordConfirm &&
@@ -45,6 +47,24 @@ function RegisterPage() {
 	function handleSubmit(ev) {
 		ev.preventDefault();
 		resetForm();
+		var registerdata={
+			email:form.email,
+			pass:form.password,
+			name:form.name
+
+		}
+		
+		var myModule = require('config');
+		axios.post(myModule.servername+"/api/memberregister", registerdata)
+		  .then(res => {
+			////console.log(res);
+			alert(res.data);
+		  })
+
+
+
+
+
 	}
 
 	return (
@@ -56,7 +76,7 @@ function RegisterPage() {
 							<img className="w-128 m-32" src="assets/images/logos/fuse.svg" alt="logo" />
 
 							<Typography variant="h6" className="mt-16 mb-32 font-bold text-20 sm:text-24">
-								Create an account
+								Create Account For Member
 							</Typography>
 
 							<form
@@ -131,6 +151,7 @@ function RegisterPage() {
 									variant="contained"
 									color="primary"
 									className="w-224 mx-auto mt-16"
+									// onClick={}
 									aria-label="Register"
 									disabled={!isFormValid()}
 									type="submit"
