@@ -35,7 +35,7 @@ const App = () => {
 			<StylesProvider jss={jss} generateClassName={generateClassName}>
 				<Provider store={store}>
 					<MuiPickersUtilsProvider utils={MomentUtils}>
-						<Auth>
+					
 							<Router history={history}>
 								<FuseAuthorization>
 									<FuseTheme>
@@ -43,7 +43,7 @@ const App = () => {
 									</FuseTheme>
 								</FuseAuthorization>
 							</Router>
-						</Auth>
+					
 					</MuiPickersUtilsProvider>
 				</Provider>
 			</StylesProvider>

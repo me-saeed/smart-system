@@ -1,0 +1,1 @@
+nav bar right side bar and footer //fuse-layout/layout1/layout1

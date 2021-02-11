@@ -162,7 +162,8 @@ function Layout1(props) {
 							<div className={classes.contentWrapper}>
 								{config.toolbar.display &&
 									config.toolbar.position === 'below' &&
-									config.toolbar.style === 'fixed' && <ToolbarLayout1 />}
+									config.toolbar.style === 'fixed' && <ToolbarLayout1 />} 
+{/* remove above layout */}
 
 								<FuseScrollbars className={classes.content} scrollToTopOnRouteChange>
 									{config.toolbar.display &&

@@ -55,7 +55,7 @@ function UserNavbarHeader(props) {
 			<Typography className="email text-13 mt-8 opacity-50 whitespace-nowrap" color="inherit">
 				{user.data.email}
 			</Typography>
-			{/* <Avatar
+			<Avatar
 				className={clsx(classes.avatar, 'avatar')}
 				alt="user photo"
 				src={
@@ -63,7 +63,7 @@ function UserNavbarHeader(props) {
 						? user.data.photoURL
 						: 'assets/images/avatars/profile.jpg'
 				}
-			/> */}
+			/>
 		</AppBar>
 	);
 }

@@ -130,7 +130,7 @@ function Login() {
 							<FuseAnimate animation="transition.slideUpIn" delay={400}>
 								<Typography variant="h3" color="inherit" className="font-800 leading-tight">
 									Welcome <br />
-									to the <br /> FUSE React!
+									to the <br /> Notry
 								</Typography>
 							</FuseAnimate>
 

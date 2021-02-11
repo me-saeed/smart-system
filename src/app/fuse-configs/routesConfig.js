@@ -17,9 +17,9 @@ const routeConfigs = [
 	...authRoleExamplesConfigs,
 	UserInterfaceConfig,
 	DocumentationConfig,
-	
 	LogoutConfig,
-	CallbackConfig
+	LoginConfig,
+	
 ];
 
 const routes = [
@@ -30,7 +30,7 @@ const routes = [
 	{
 		path: '/',
 		exact: true,
-		component: () => <Redirect to="/apps/dashboards/analytics" />
+		component: () => <Redirect to="/pages/auth/login-2/Login2Page" />
 	},
 	{
 		component: () => <Redirect to="/pages/errors/error-404" />

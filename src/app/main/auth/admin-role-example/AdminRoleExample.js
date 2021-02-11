@@ -66,20 +66,7 @@ function AdminRoleExample(props) {
 						You can also hide the navigation item/collapse/group with user roles by giving auth property.
 					</Typography>
 
-					<FuseHighlight component="pre" className="language-json">
-						{`
-                                export const fuseNavigationConfig = [
-                                   {
-                                        'id'   : 'only-admin-navigation-item',
-                                        'title': 'Nav item only for Admin',
-                                        'type' : 'item',
-                                        'auth' : authRoles.admin,//['admin']
-                                        'url'  : '/auth/admin-role-example',
-                                        'icon' : 'verified_user'
-                                    }
-                                ];
-                            `}
-					</FuseHighlight>
+					
 				</div>
 			}
 		/>
