@@ -55,7 +55,14 @@ function Login2Page() {
 		axios.post(myModule.servername+"/api/memberlogin", registerdata)
 		  .then(res => {
 			////console.log(res);
-			alert(res.data);
+			if(res.data=="fail"){
+				alert("Wrong Attempt")
+
+			}
+			else{
+				localStorage.setItem("smartsystem",res.data)
+			}
+
 		  })
 
 
