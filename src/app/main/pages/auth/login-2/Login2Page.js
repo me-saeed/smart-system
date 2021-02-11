@@ -60,7 +60,9 @@ function Login2Page() {
 
 			}
 			else{
-				localStorage.setItem("smartsystem",res.data)
+				localStorage.setItem("smartsystem",JSON.stringify(res.data))
+
+			window.location.href="/"
 			}
 
 		  })
@@ -170,7 +172,7 @@ function Login2Page() {
 
 						<div className="flex flex-col items-center justify-center pt-32 pb-24">
 							<span className="font-medium">Don't have an account?</span>
-							<Link className="font-medium" to="/pages/auth/register-2">
+							<Link className="font-medium" to="/pages/auth/register">
 								Create an account
 							</Link>
 						</div>

@@ -25,16 +25,20 @@ function UserMenu(props) {
 		setUserMenu(null);
 	};
 
+	function logoutfun(){
+		localStorage.removeItem("smartsystem");
+		window.location.href="/"
+	}
+
 	return (
 		<>
 			<Button className="min-h-40 min-w-40 px-0 md:px-16 py-0 md:py-6" onClick={userMenuClick}>
 				<div className="hidden md:flex flex-col mx-4 items-end">
 					<Typography component="span" className="font-bold flex">
-					dsfsdfs
+					{user.data.displayName}
 					</Typography>
 					<Typography className="text-11 capitalize" color="textSecondary">
-						{user.role.toString()}
-						{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) && 'Guest'}
+					{user.data.role}
 					</Typography>
 				</div>
 
@@ -63,17 +67,24 @@ function UserMenu(props) {
 			>
 				{!user.role || user.role.length === 0 ? (
 					<>
-						<MenuItem component={Link} to="/login" role="button">
+						<MenuItem component={Link} to="/pages/profile" role="button">
 							<ListItemIcon className="min-w-40">
 								<Icon>lock</Icon>
 							</ListItemIcon>
-							<ListItemText primary="Login" />
+							<ListItemText primary="My Profile" />
 						</MenuItem>
-						<MenuItem component={Link} to="/register" role="button">
+						<MenuItem component={Link} to="/pages/editprofile"role="button">
 							<ListItemIcon className="min-w-40">
 								<Icon>person_add</Icon>
 							</ListItemIcon>
-							<ListItemText primary="Register" />
+							<ListItemText primary="Edit Profile" />
+						</MenuItem>
+
+						<MenuItem component={Link} role="button">
+							<ListItemIcon className="min-w-40">
+								<Icon>person_add</Icon>
+							</ListItemIcon>
+							<ListItemText  onClick={logoutfun}primary="Logout" />
 						</MenuItem>
 					</>
 				) : (

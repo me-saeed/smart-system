@@ -157,12 +157,19 @@ function Layout1(props) {
 						{config.toolbar.display && config.toolbar.position === 'above' && <ToolbarLayout1 />}
 
 						<div className={classes.wrapper}>
+
+						{localStorage.getItem("smartsystem")!=null?<>
 							{config.navbar.display && config.navbar.position === 'left' && <NavbarWrapperLayout1 />}
 
+							</>:null}
 							<div className={classes.contentWrapper}>
+
+								{localStorage.getItem("smartsystem")!=null?<>
 								{config.toolbar.display &&
 									config.toolbar.position === 'below' &&
-									config.toolbar.style === 'fixed' && <ToolbarLayout1 />} 
+									config.toolbar.style === 'fixed' && <ToolbarLayout1 />}
+
+									</>:null}
 {/* remove above layout */}
 
 								<FuseScrollbars className={classes.content} scrollToTopOnRouteChange>
@@ -175,26 +182,26 @@ function Layout1(props) {
 									<FuseSuspense>{renderRoutes(routes)}</FuseSuspense>
 
 									{props.children}
-
+{/* 
 									{config.footer.display &&
 										config.footer.position === 'below' &&
-										config.footer.style !== 'fixed' && <FooterLayout1 />}
+										config.footer.style !== 'fixed' && <FooterLayout1 />} */}
 								</FuseScrollbars>
-
+{/* 
 								{config.footer.display &&
 									config.footer.position === 'below' &&
-									config.footer.style === 'fixed' && <FooterLayout1 />}
+									config.footer.style === 'fixed' && <FooterLayout1 />} */}
 
-								<SettingsPanel />
+								{/* <SettingsPanel /> */}
 							</div>
 
-							{config.navbar.display && config.navbar.position === 'right' && <NavbarWrapperLayout1 />}
+							{/* {config.navbar.display && config.navbar.position === 'right' && <NavbarWrapperLayout1 />} */}
 						</div>
 
-						{config.footer.display && config.footer.position === 'above' && <FooterLayout1 />}
+						{/* {config.footer.display && config.footer.position === 'above' && <FooterLayout1 />} */}
 					</div>
 
-					{config.rightSidePanel.display && <RightSideLayout1 />}
+					{/* {config.rightSidePanel.display && <RightSideLayout1 />} */}
 
 					<FuseMessage />
 				</div>
