@@ -11,6 +11,7 @@ module.exports = function(router) {
 
     router.post("/memberregister", (req, res1) => {
 
+      req.body.pic="https://image.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg";
 
         MongoClient.connect(url, function (err, db) {
           if (err) throw err;
