@@ -17,9 +17,7 @@ const routeConfigs = [
 	...authRoleExamplesConfigs,
 	UserInterfaceConfig,
 	DocumentationConfig,
-	LogoutConfig,
-	LoginConfig,
-	RegisterConfig,
+	
 	LogoutConfig,
 	CallbackConfig
 ];

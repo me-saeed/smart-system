@@ -197,6 +197,7 @@ function Editprofile() {
 <br/><br/>
 
 {/* jwt token */}
+{/* 
 <section style={{ marginBottom: '10px' }}>
         <button onClick={() => getJwt()}>Get JWT</button>
         {jwt && (
@@ -217,7 +218,7 @@ function Editprofile() {
         {fetchError && (
           <p style={{ color: 'red' }}>{fetchError}</p>
         )}
-      </section>
+      </section> */}
 
 
 

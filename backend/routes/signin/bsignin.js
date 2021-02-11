@@ -27,16 +27,6 @@ function sendotp(myph,code){
     }
 
 
-
-
-
-
-
-
-
-
-
-
     router.post("/signin", (req, res1) => {
 
 
@@ -66,9 +56,7 @@ function sendotp(myph,code){
                 }
               });
     
-              
-    
-            
+ 
           
       });
     
