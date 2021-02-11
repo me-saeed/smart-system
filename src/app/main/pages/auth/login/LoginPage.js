@@ -38,6 +38,8 @@ function LoginPage() {
 	function handleSubmit(ev) {
 		ev.preventDefault();
 		resetForm();
+
+		alert("success redirecting you")
 	}
 
 	return (

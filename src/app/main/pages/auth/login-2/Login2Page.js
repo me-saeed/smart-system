@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
@@ -35,12 +36,30 @@ function Login2Page() {
 	});
 
 	function isFormValid() {
-		return form.email.length > 0 && form.password.length > 0;
+		return form.email.length > 0 && 
+		form.email.includes('@') &&
+		form.password.length > 0;
 	}
 
 	function handleSubmit(ev) {
 		ev.preventDefault();
 		resetForm();
+		var registerdata={
+			email:form.email,
+			pass:form.password,
+			name:form.name
+
+		}
+		
+		var myModule = require('config');
+		axios.post(myModule.servername+"/api/memberlogin", registerdata)
+		  .then(res => {
+			////console.log(res);
+			alert(res.data);
+		  })
+
+
+	
 	}
 
 	return (
@@ -67,7 +86,7 @@ function Login2Page() {
 				<Card className="w-full max-w-400 mx-auto m-16 md:m-0" square>
 					<CardContent className="flex flex-col items-center justify-center p-32 md:p-48 md:pt-128 ">
 						<Typography variant="h6" className="mb-32 font-bold text-20 sm:text-24">
-							Login to your account
+							Login 
 						</Typography>
 
 						<form
@@ -118,6 +137,7 @@ function Login2Page() {
 
 							<Button
 								variant="contained"
+								onClick={handleSubmit}
 								color="primary"
 								className="w-full mx-auto mt-16"
 								aria-label="LOG IN"
