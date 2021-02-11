@@ -1,3 +1,1 @@
 nav bar right side bar and footer //fuse-layout/layout1/layout1
-pages/maintenance
-fuse-layout/userMenu
