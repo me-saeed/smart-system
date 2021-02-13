@@ -58,10 +58,10 @@ function RegisterPage() {
 		axios.post(myModule.servername+"/api/memberregister", registerdata)
 		  .then(res => {
 			////console.log(res);
-			if(res.data!="wrong attemp"){
+			alert(res.data)
 				
 			window.location.href="/"
-			}
+			
 
 
 		  })

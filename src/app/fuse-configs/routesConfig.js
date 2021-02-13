@@ -21,20 +21,43 @@ const routeConfigs = [
 	LoginConfig,
 	
 ];
+var routes;
+if(JSON.parse(localStorage.getItem("smartsystem"))==null){
+	 routes = [
+		// if you want to make whole app auth protected by default change defaultAuth for example:
+		// ...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin','staff','user']),
+		// The individual route configs which has auth option won't be overridden.
+		...FuseUtils.generateRoutesFromConfigs(routeConfigs, null),
+		{
+			path: '/',
+			exact: true,
+			component: () => <Redirect to="/pages/auth/login-2/Login2Page" />
+		},
+		{
+			component: () => <Redirect to="/pages/errors/error-404" />
+		}
+	];
+	
+}
+else{
+	 routes = [
+		// if you want to make whole app auth protected by default change defaultAuth for example:
+		// ...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin','staff','user']),
+		// The individual route configs which has auth option won't be overridden.
+		...FuseUtils.generateRoutesFromConfigs(routeConfigs, null),
+		{
+			path: '/',
+			exact: true,
+			component: () => <Redirect to="/pages/coming-soon" />
+		},
+		{
+			component: () => <Redirect to="/pages/errors/error-404" />
+		}
+	];
+	
+}
 
-const routes = [
-	// if you want to make whole app auth protected by default change defaultAuth for example:
-	// ...FuseUtils.generateRoutesFromConfigs(routeConfigs, ['admin','staff','user']),
-	// The individual route configs which has auth option won't be overridden.
-	...FuseUtils.generateRoutesFromConfigs(routeConfigs, null),
-	{
-		path: '/',
-		exact: true,
-		component: () => <Redirect to="/pages/auth/login-2/Login2Page" />
-	},
-	{
-		component: () => <Redirect to="/pages/errors/error-404" />
-	}
-];
+
+
 
 export default routes;

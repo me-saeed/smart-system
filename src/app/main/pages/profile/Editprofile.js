@@ -3,33 +3,16 @@ import React, { useState, useEffect } from "react";
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 
-import FuseAnimate from '@fuse/core/FuseAnimate';
-import FusePageSimple from '@fuse/core/FusePageSimple';
-import Avatar from '@material-ui/core/Avatar';
+
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { useForm } from "react-hook-form";
-import { connect } from "react-redux";
+
 
 import axios from 'axios';
 
 
-// const apiUrl = 'http://localhost:5000';
-// axios.interceptors.request.use(
-//   config => {
-//     const { origin } = new URL(config.url);
-//     const allowedOrigins = [apiUrl];
-//     const token = localStorage.getItem('token');
-//     if (allowedOrigins.includes(origin)) {
-//       config.headers.authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   error => {
-//     return Promise.reject(error);
-//   }
-// );
 
 
 const useStyles = makeStyles((theme) => ({
@@ -119,26 +102,6 @@ axios.post(myModule.servername+"/api/editprofile", object)
 
 
 
-  //   const storedJwt = localStorage.getItem('token');
-  //   const [jwt, setJwt] = useState(storedJwt || null);
-  //   const [foods, setFoods] = useState([]);
-  //   const [fetchError, setFetchError] = useState(null);
-  // const getJwt = async () => {
-  //   alert(jwt)
-  //     const { data } = await axios.get(`${apiUrl}/jwt`);
-  //     localStorage.setItem('token', data.token);
-  //     setJwt(data.token);
-  //   };
-  // const getFoods = async () => {
-  //     try {
-  //       const { data } = await axios.get(`${apiUrl}/foods`);
-  //       setFoods(data);
-  //       setFetchError(null);
-  //     } catch (err) {
-  //       setFetchError(err.message);
-  //     }
-  //   };
-
 
 
     return (
@@ -149,10 +112,10 @@ axios.post(myModule.servername+"/api/editprofile", object)
              <Grid item lg={4} md={4} sm={4} xs={4}>
                  </Grid>
         <Grid item lg={4} md={4} sm={4} xs={4}>
-        <FuseAnimate animation="transition.expandIn" delay={300}>
+     
           <img className="w-96 h-96 rounded-full" src={img1}  id="output" />
-							{/* <Avatar className="w-96 h-96" src="assets/images/avatars/Velazquez.jpg"  id="output" /> */}
-						</FuseAnimate>
+				
+						
             </Grid>
 
             </Grid>
@@ -242,29 +205,6 @@ axios.post(myModule.servername+"/api/editprofile", object)
 
 <br/><br/>
 
-{/* jwt token */}
-{/* 
-<section style={{ marginBottom: '10px' }}>
-        <button onClick={() => getJwt()}>Get JWT</button>
-        {jwt && (
-          <pre>
-            <code>{jwt}</code>
-          </pre>
-        )}
-      </section>
-      <section>
-        <button onClick={() => getFoods()}>
-          Get Foods
-        </button>
-        <ul>
-          {foods.map((food, i) => (
-            <li>{food.description}</li>
-          ))}
-        </ul>
-        {fetchError && (
-          <p style={{ color: 'red' }}>{fetchError}</p>
-        )}
-      </section> */}
 
 
 
@@ -275,4 +215,3 @@ axios.post(myModule.servername+"/api/editprofile", object)
 }
 
 export default Editprofile
-// connect(({ firstName, lastName }) => ({ firstName, lastName }), updateAction)(YourForm);
