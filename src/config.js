@@ -8,7 +8,7 @@ module.exports = {
 ///servername: "https://latestlocaldealz.com/api",
  
  
-servername:"http://localhost:5000"
+servername:"http://18.220.159.109:5000"
 
 
  

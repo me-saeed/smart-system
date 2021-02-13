@@ -36,7 +36,7 @@ function JWTLoginTab(props) {
 	}
 
 	function handleSubmit(model) {
-		dispatch(submitLogin(model));
+		// dispatch(submitLogin(model));
 	}
 
 	return (
@@ -115,7 +115,7 @@ function JWTLoginTab(props) {
 				</Button>
 			</Formsy>
 
-			<table className="text-center w-full mt-32">
+			{/* <table className="text-center w-full mt-32">
 				<thead>
 					<tr>
 						<th>
@@ -163,7 +163,7 @@ function JWTLoginTab(props) {
 						</td>
 					</tr>
 				</tbody>
-			</table>
+			</table> */}
 		</div>
 	);
 }

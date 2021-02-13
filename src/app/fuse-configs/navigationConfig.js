@@ -9,8 +9,12 @@ import tr from './navigation-i18n/tr';
 i18next.addResourceBundle('en', 'navigation', en);
 i18next.addResourceBundle('tr', 'navigation', tr);
 i18next.addResourceBundle('ar', 'navigation', ar);
+var navigationConfig;
+if(JSON.parse(localStorage.getItem("smartsystem"))!=null){
 
-const navigationConfig = [
+
+if(JSON.parse(localStorage.getItem("smartsystem")).role=="Admin"){
+ navigationConfig = [
 	{
 		id: 'applications',
 		title: 'Applications',
@@ -41,12 +45,17 @@ const navigationConfig = [
 			// },
 			// {
 			// 	id: 'calendar',
-			// 	title: 'Calendar',
+			// 	title: 'Calendar',JSON.parse(localStorage.getItem("smartsystem")).role
 			// 	translate: 'CALENDAR',
 			// 	type: 'item',
 			// 	icon: 'today',
 			// 	url: '/apps/calendar'
 			// },
+			
+			
+			
+			
+			
 			{
 				id: 'Admin',
 				title: 'Admin',
@@ -69,6 +78,8 @@ const navigationConfig = [
 						url: '/apps/Admin/showuser',
 						exact: true
 					},
+
+					
 					// {
 					// 	id: 'e-commerce-new-product',
 					// 	title: 'New Product',
@@ -91,7 +102,8 @@ const navigationConfig = [
 					// 	exact: true
 					// }
 				]
-			},
+			}
+			
 	// 		{
 	// 			id: 'academy',
 	// 			title: 'Academy',
@@ -786,5 +798,27 @@ const navigationConfig = [
 		]
 	}
 ];
+}
+else{
+	navigationConfig = [
+		{
+			id: 'applications',
+			title: 'Applications',
+			translate: 'APPLICATIONS',
+			type: 'group',
+			icon: 'apps',}]
+	
 
+}
+}
+else{
+	navigationConfig = [
+		{
+			id: 'applications',
+			title: 'Applications',
+			translate: 'APPLICATIONS',
+			type: 'group',
+			icon: 'apps',
+			children: []}]
+}
 export default navigationConfig;

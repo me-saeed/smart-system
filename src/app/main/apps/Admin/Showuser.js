@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -24,30 +24,69 @@ const useStyles = makeStyles({
   
 
 function Showuser() {
+
+  const [cardsstate,setcardsstate ] = useState([]);
+
+
+
+
+  const getcards= async()  => {
+
+    var myModule = require('config');
+   
+    const response= await fetch(myModule.servername+"/api/showmembers", {
+      method: "post",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+      },
+
+      body: ``,
+    });
+    const json=await response.json();
+  
+setcardsstate(json);
+
+
+
+}
+useEffect(() => {
+
+  
+ getcards();
+}, []);
+
+
+
+
+
     const classes = useStyles();
     return (
         <div>
             <br/><br/>
-             <TableContainer component={Paper}  className={classes.table}>
-      <Table aria-label="simple table">
+             <TableContainer component={Paper} style={{width:"1000px"}}  className={classes.table}>
+      <Table aria-label="simple table" >
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">Action</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell >Role</TableCell>
            
           </TableRow>
         </TableHead>
         <TableBody>
          
+        {cardsstate.map((s,i)=> ( <> 
+
             <TableRow >
              
-              <TableCell align="right">ibad</TableCell>
-              <TableCell align="right"><Button variant="contained" color="secondary">
-        delete
-      </Button></TableCell>
-              
+              <TableCell align="left">{s.name}</TableCell>
+              <TableCell align="left">{s.email}</TableCell>
+      <TableCell align="left"> {s.role}</TableCell>
             </TableRow>
         
+
+
+        </>))}
         </TableBody>
       </Table>
     </TableContainer>

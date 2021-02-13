@@ -45,4 +45,45 @@ module.exports = function(router) {
          });
 
 
+
+
+
+
+         router.post("/showmembers", (req, res1) => {
+
+        var allposts=[];
+        //   var checksubscribe=[];
+            
+            MongoClient.connect(url, {
+              useNewUrlParser: true,
+              useUnifiedTopology: true,
+            },async function(err, db) {
+              if (err) throw err;
+              var dbo = db.db("smartsystem");
+              /*Return only the documents with the address "Park Lane 38":*/
+              var query = {};
+          
+              allposts= await dbo.collection('users').aggregate([
+                // { $match : {}},
+               
+                
+              
+          
+             
+            
+               ]).toArray()
+            
+                           /////console.log(allposts);
+                            res1.json(allposts);
+
+          
+          
+             });
+            
+          
+          
+           });
+  
+
+
 };

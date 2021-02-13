@@ -189,9 +189,10 @@ export const updateUserData = user => async (dispatch, getState) => {
 const initialState = {
 	role: [], // guest
 	data: {
-		displayName: 'baad ma search kar lon',
-		photoURL: 'assets/images/avatars/Velazquez.jpg',
-		email: 'johndoe@withinpixels.com',
+		role:localStorage.getItem("smartsystem")!=null?JSON.parse(localStorage.getItem("smartsystem")).role:null,
+		displayName: localStorage.getItem("smartsystem")!=null?JSON.parse(localStorage.getItem("smartsystem")).name:null,
+		photoURL:localStorage.getItem("smartsystem")!=null?JSON.parse(localStorage.getItem("smartsystem")).pic:null,
+		email: localStorage.getItem("smartsystem")!=null?JSON.parse(localStorage.getItem("smartsystem")).email:null,
 		shortcuts: ['calendar', 'mail', 'contacts', 'todo']
 	}
 };
