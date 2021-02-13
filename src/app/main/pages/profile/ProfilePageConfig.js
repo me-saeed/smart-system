@@ -12,7 +12,7 @@ const ProfilePageConfig = {
 			component: React.lazy(() => import('./ProfilePage'))
 		},
 		{
-			path: '/pages/Editprofile',
+			path: '/Editprofile',
 			component: React.lazy(() => import('./Editprofile'))
 		}
 	]

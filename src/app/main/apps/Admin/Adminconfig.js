@@ -14,6 +14,10 @@ const AcademyAppConfig = {
 			path: '/apps/Admin/showuser',
 			component: React.lazy(() => import('./Showuser'))
 		},
+		{
+			path: '/apps/Admin/editprofile',
+			component: React.lazy(() => import('./Editprofile'))
+		},
 	]
 };
 
