@@ -13,6 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import {
 	removeContact,
 	updateContact,
@@ -82,11 +83,36 @@ function ContactDialog(props) {
 	function handleSubmit(event) {
 		event.preventDefault();
 
-		if (contactDialog.type === 'new') {
-			dispatch(addContact(form));
-		} else {
-			dispatch(updateContact(form));
+		console.log(form)
+
+
+
+
+		var myModule = require('config');
+
+		var registerdata={
+		  email:form.email,
+		  pass:form.lastName,
+		  pass:form.lastName,
+		  name:form.name
+	  
 		}
+	  
+		axios.post(myModule.servername+"/api/adminregister", registerdata)
+		  .then(res => {
+		  ////console.log(res);
+		  alert(res.data)
+		////location.href="/"
+		  
+	  
+	  
+		  })
+	  
+	  
+
+
+
+
 		closeComposeDialog();
 	}
 
@@ -145,7 +171,7 @@ function ContactDialog(props) {
 						<div className="min-w-48 pt-20" />
 						<TextField
 							className="mb-24"
-							label="Last name"
+							label="User Pass"
 							id="lastName"
 							name="lastName"
 							value={form.lastName}

@@ -73,7 +73,7 @@ function UserMenu(props) {
 							</ListItemIcon>
 							<ListItemText primary="My Profile" />
 						</MenuItem>
-						<MenuItem component={Link} to="/pages/editprofile"role="button">
+						<MenuItem component={Link} to="/apps/Admin/editprofile"role="button">
 							<ListItemIcon className="min-w-40">
 								<Icon>person_add</Icon>
 							</ListItemIcon>

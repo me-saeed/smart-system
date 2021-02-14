@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Checkbox from '@material-ui/core/Checkbox';
 import Table from '@material-ui/core/Table';
 import PropTypes from 'prop-types';
@@ -12,6 +12,9 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
 import clsx from 'clsx';
 import ContactsTablePaginationActions from './ContactsTablePaginationActions';
+
+
+
 
 const IndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref) => {
 	const defaultRef = React.useRef();
@@ -29,6 +32,46 @@ const IndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref)
 });
 
 const EnhancedTable = ({ columns, data, onRowClick }) => {
+
+
+
+
+	const [cardsstate,setcardsstate ] = useState([]);
+
+
+
+
+	const getcards= async()  => {
+	
+	  var myModule = require('config');
+	 
+	  const response= await fetch(myModule.servername+"/api/showmembers", {
+		method: "post",
+		headers: {
+		  "content-type": "application/x-www-form-urlencoded; charset=utf-8",
+		},
+	
+		body: ``,
+	  });
+	  const json=await response.json();
+	
+	setcardsstate(json);
+	
+	
+	
+	}
+	useEffect(() => {
+	
+	
+	getcards();
+	}, []);
+	
+
+
+
+
+
+
 	const {
 		getTableProps,
 		headerGroups,
@@ -94,50 +137,26 @@ const EnhancedTable = ({ columns, data, onRowClick }) => {
 			<TableContainer className="flex flex-1">
 				<Table {...getTableProps()} stickyHeader>
 					<TableHead>
-						{headerGroups.map(headerGroup => (
-							<TableRow {...headerGroup.getHeaderGroupProps()}>
-								{headerGroup.headers.map(column => (
-									<TableCell
-										className="whitespace-nowrap p-4 md:p-12"
-										{...(!column.sortable
-											? column.getHeaderProps()
-											: column.getHeaderProps(column.getSortByToggleProps()))}
-									>
-										{column.render('Header')}
-										{column.sortable ? (
-											<TableSortLabel
-												active={column.isSorted}
-												// react-table has a unsorted state which is not treated here
-												direction={column.isSortedDesc ? 'desc' : 'asc'}
-											/>
-										) : null}
-									</TableCell>
-								))}
-							</TableRow>
-						))}
+					<TableRow>
+            <TableCell>Name</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell >Role</TableCell>
+           
+          </TableRow>
 					</TableHead>
 					<TableBody>
-						{page.map((row, i) => {
-							prepareRow(row);
-							return (
-								<TableRow
-									{...row.getRowProps()}
-									onClick={ev => onRowClick(ev, row)}
-									className="truncate cursor-pointer"
-								>
-									{row.cells.map(cell => {
-										return (
-											<TableCell
-												{...cell.getCellProps()}
-												className={clsx('p-4 md:p-12', cell.column.className)}
-											>
-												{cell.render('Cell')}
-											</TableCell>
-										);
-									})}
-								</TableRow>
-							);
-						})}
+					{cardsstate.map((s,i)=> ( <> 
+
+<TableRow >
+ 
+  <TableCell align="left">{s.name}</TableCell>
+  <TableCell align="left">{s.email}</TableCell>
+<TableCell align="left"> {s.role}</TableCell>
+</TableRow>
+
+
+
+</>))}
 					</TableBody>
 				</Table>
 			</TableContainer>
